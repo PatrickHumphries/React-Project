@@ -1,5 +1,11 @@
-export default interface Event{
-    name:string;
-    type:string;
-    url:string;
+export interface EventResponse {
+    _embedded: Embedded;
+}
+
+export interface Embedded {
+    events: Event[];
+}
+
+export interface Event {
+    name: string;
 }
