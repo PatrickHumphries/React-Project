@@ -1,3 +1,4 @@
+import './EventList.css';
 import {useEffect, useState} from 'react';
 import {Event, Images} from '../model/Event';
 import {fetchAllEvents, fetchOneImage} from '../service/events-service';
