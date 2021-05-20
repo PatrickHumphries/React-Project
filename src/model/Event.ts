@@ -9,6 +9,8 @@ export interface Embedded {
 export interface Event {
     name: string;
     images: Images[];
+    priceRanges: PriceRanges[];
+    _embedded: Embedded2;
 }
 
 export interface Images {
@@ -16,6 +18,28 @@ export interface Images {
     url: string;
     width: number;
     height: number;
-    
+}
+
+export interface Embedded2 {
+    venues: Venue[];
+}
+
+export interface Venue {
+    country: Country; 
+    city: City;
+}
+
+export interface Country {
+    name: string;
+}
+
+export interface City {
+    name: string
+}
+
+export interface PriceRanges {
+    currency: string;
+    min: number;
+    max: number;
 }
 
