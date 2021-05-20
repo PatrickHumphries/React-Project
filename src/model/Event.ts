@@ -8,4 +8,14 @@ export interface Embedded {
 
 export interface Event {
     name: string;
+    images: Images[];
 }
+
+export interface Images {
+    ratio: string;
+    url: string;
+    width: number;
+    height: number;
+    
+}
+
