@@ -57,9 +57,7 @@ function EventsList() {
       </ol>
        :<ol>
         {events.map((event, i) => (
-            <li key={i}>
-              <img src={event.images[0].url} />
-              {event.name} 
+            <li>
             </li>
           ))}
         </ol>}
