@@ -5,10 +5,9 @@ import Header from "./Header";
 import { Event } from "../model/Event";
 
 function EventParent() {
-  const [matchingEvents, setMatchingEvents] = useState<Event[]>([]);
   return (
     <div className="EventParent">
-      <EventsList onSubmit={() => setMatchingEvents(matchingEvents)}/>
+      <EventsList/>
     </div>
   );
 }
