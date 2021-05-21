@@ -7,7 +7,7 @@ import { Event } from "../model/Event";
 function EventParent() {
   return (
     <div className="EventParent">
-      <EventsList/>
+      <EventsList />
     </div>
   );
 }

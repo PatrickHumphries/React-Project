@@ -1,3 +1,25 @@
 .EventsList ol li img {
     height: 30px;
 }
+
+.EventsList {
+    background-color: rgba(36, 36, 36, 0.75);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.EventsList li:hover {
+    color: rgb(255, 95, 95);
+}
+
+.EventsList h2 {
+    font-size: 3em;
+    margin: 0 auto;
+    border-bottom: solid 2px salmon;
+}
+
+.EventsList form {
+    margin: 20px;
+}

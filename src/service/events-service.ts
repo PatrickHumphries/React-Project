@@ -3,11 +3,11 @@ import {Event, EventResponse, Images, Venue} from "../model/Event";
 export const apiKey = process.env.REACT_APP_EVENTS_API_KEY || ''
 
 export function fetchAllEvents(keyword: string): Promise<Event[]> {
-  return fetch(`https://app.ticketmaster.com/discovery/v2/events/?apikey=${apiKey}&keyword=${keyword}`)
+  return fetch(`https://app.ticketmaster.com/discovery/v2/events?keyword=${keyword}&apikey=${apiKey}`)
     .then(res => res.json())
     // The type of data must be the interface for the outermost JSON
     .then((data: EventResponse) => {
-      return data._embedded.events;
+      return data._embedded?.events;
     });
   }
 
