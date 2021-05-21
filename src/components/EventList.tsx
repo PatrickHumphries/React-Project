@@ -12,7 +12,7 @@ function EventsList()  {
   // const [selectedId, setSelectedId] = useState("1");
 
   useEffect(() => {
-    fetchAllEvents().then((data) => {
+    fetchAllEvents("Detroit").then((data) => {
       setEvents(data);
     });
   }, []);

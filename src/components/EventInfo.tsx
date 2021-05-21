@@ -14,7 +14,7 @@ function EventInfo({event}: Props) {
         <h1>{event.name}</h1>
       <section>
         <li>
-          {/* <img src={event.images[0].url} /> */}
+          <img src={event.images[0].url} />
         </li>
       </section>
       <ul>
