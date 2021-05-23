@@ -4,11 +4,10 @@
 }
 
 .EventsList {
-    background-color: rgba(36, 36, 36, 0.75);
     color: white;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
 }
 
 .EventsList li:hover {
