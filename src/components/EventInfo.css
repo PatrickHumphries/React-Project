@@ -1,3 +1,8 @@
-.EventInfo section li img {
+.EventInfo section img {
     height: 75px;
+    width: 150px;
+}
+
+.EventInfo {
+    margin: 15px;
 }

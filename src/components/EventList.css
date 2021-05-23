@@ -1,5 +1,6 @@
 .EventsList ol li img {
     height: 30px;
+    width: 50px;
 }
 
 .EventsList {
@@ -12,6 +13,8 @@
 
 .EventsList li:hover {
     color: rgb(255, 95, 95);
+    font-size: 1.2em;
+    transition: all 200ms;
 }
 
 .EventsList h2 {
@@ -22,4 +25,6 @@
 
 .EventsList form {
     margin: 20px;
+    display: flex;
 }
+
