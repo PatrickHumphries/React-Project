@@ -1,7 +1,7 @@
 import "./EventList.css";
 import React, { FormEvent, useEffect, useState } from "react";
 import { Event, Images } from "../model/Event";
-import { fetchAllEvents, fetchOneImage } from "../service/events-service";
+import { fetchAllEvents, fetchByLocation, fetchOneImage } from "../service/events-service";
 import EventInfo from "./EventInfo";
 import Header from "./Header";
 
@@ -13,10 +13,13 @@ function EventsList() {
   const [events, setEvents] = useState<Event[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [keyword, setKeyword] = useState("");
+  const [place, setPlace] = useState("");
+  const [option, setOption] = useState("");
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setKeyword("");
+    setPlace("");
   }
 
   useEffect(() => {
@@ -25,14 +28,32 @@ function EventsList() {
     });
   }, [keyword]);
 
+  useEffect(() => {
+    fetchByLocation(place).then((data) => {
+      setEvents(data);
+    });
+  }, [place]);
+
+  console.log(option);
+
   return (
     <div className="EventsList">
       <form>
+        {option === "keyword"?
         <input
-          type="text"
-          placeholder="Search by keyword..."
-          onChange={(e) => setKeyword(e.target.value)}
-        />
+        type="text"
+        placeholder="Search by keyword..."
+        onChange={(e) => setKeyword(e.target.value)} 
+      />: <input
+      type="text"
+      placeholder="Search by state..."
+      onChange={(e) => setPlace(e.target.value)} 
+    />}
+         <select onChange={(e) => setOption( e.target.value )}>
+          <option value="keyword">Keyword</option>
+          <option selected defaultValue="state-initials">State Initials</option>
+          <option value="price-range">Price Range</option>
+        </select>
         <button type="submit" onClick={() => handleSubmit}>
           Reset
         </button>

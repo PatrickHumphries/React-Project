@@ -29,3 +29,12 @@ export function fetchAllEvents(keyword: string): Promise<Event[]> {
       return data;
     });
   }  
+
+  export function fetchByLocation(place: string): Promise<Event[]> {
+    return fetch(`https://app.ticketmaster.com/discovery/v2/events?stateCode=${place}&apikey=${apiKey}`)
+      .then(res => res.json())
+      // The type of data must be the interface for the outermost JSON
+      .then((data: EventResponse) => {
+        return data._embedded?.events;
+      });
+    }
