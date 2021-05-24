@@ -2,3 +2,13 @@
     height: 250px;
     width: 400px;
 }
+
+.Favorites #link {
+    text-decoration: none;
+    color: salmon;
+}
+
+.Favorites #link:hover {
+    text-decoration: none;
+    color: rgb(251, 74, 55);
+}

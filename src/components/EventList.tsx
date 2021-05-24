@@ -87,7 +87,7 @@ function EventsList() {
       ) : (
         <p>No matches..</p>
       )}
-      <Link to="/favorites">Go to BucketList</Link>
+      <Link to="/favorites" id="bucketLink">Go to BucketList</Link>
       <div className="selectedEvent">
         {selectedEvent !== null && <EventInfo event={selectedEvent} />}
       </div>

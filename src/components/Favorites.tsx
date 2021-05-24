@@ -7,7 +7,9 @@ function Favorites() {
   const {events, removeEvent} = useContext(EventContext);
 
   return (
+  
     <div className="Favorites">
+    <Link to="/" id="link">Home</Link>
       <ol>
         {events.map((event, i) => (
           <li key={i}>

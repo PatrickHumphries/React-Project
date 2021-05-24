@@ -5,4 +5,20 @@
 
 .EventInfo {
     margin: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  
 }
+
+.EventInfo button {
+    border-radius: 5px;
+    font-size: 1em;
+    width: 200px;
+}
+
+.EventInfo button:hover {
+    background-color: salmon;
+}
+
+
