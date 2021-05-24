@@ -28,6 +28,7 @@ export interface Embedded2 {
 export interface Venue {
     country: Country; 
     city: City;
+    state: State;
     upcomingEvents: UpcomingEvents;
 }
 
@@ -37,6 +38,10 @@ export interface Country {
 
 export interface City {
     name: string
+}
+
+export interface State {
+    stateCode: string
 }
 
 export interface PriceRanges {
