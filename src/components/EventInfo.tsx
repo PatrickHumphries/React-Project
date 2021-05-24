@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { EventContext } from "../context/events-context";
 import { Event } from "../model/Event";
 import "./EventInfo.css";
 
@@ -14,6 +16,9 @@ function EventInfo({ event }: Props) {
   const maxPrice = event.priceRanges[0].max;
   const currency = event.priceRanges[0].currency;
   const upcomingEvents = event._embedded.venues[0].upcomingEvents._total;
+
+  const {addEvent} = useContext(EventContext);
+
   return (
     <div className="EventInfo">
       <h1>{event.name}</h1>
@@ -24,14 +29,15 @@ function EventInfo({ event }: Props) {
         {city}, {state}, {country}.
       </p>
       <p>
-      <a href={linkUrl}><h1>Ticketmaster Website</h1></a>
-      </p>
-      <p>
         Price Range:{minPrice}-{maxPrice} {currency}
       </p>
       <p>
         Upcoming Events:{upcomingEvents}
       </p>
+      <p>
+      <a href={linkUrl}>Ticketmaster Website</a>
+      </p>
+      <button onClick={() => addEvent(event)}>Add To Bucketlist</button>
     </div>
   );
 }

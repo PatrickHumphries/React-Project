@@ -1,25 +1,23 @@
 import "./EventList.css";
 import React, { FormEvent, useEffect, useState } from "react";
-import { Event, Images } from "../model/Event";
-import { fetchAllEvents, fetchByLocation, fetchOneImage } from "../service/events-service";
+import { Event } from "../model/Event";
+import { fetchAllEvents, fetchByLocation } from "../service/events-service";
 import EventInfo from "./EventInfo";
-import Header from "./Header";
-
-// interface Props {
-//   onSubmit(): string;
-// }
+import { Link } from "react-router-dom";
 
 function EventsList() {
   const [events, setEvents] = useState<Event[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [keyword, setKeyword] = useState("");
   const [place, setPlace] = useState("");
+  const [classification, setClassification] = useState("");
   const [option, setOption] = useState("");
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setKeyword("");
     setPlace("");
+    setClassification("");
   }
 
   useEffect(() => {
@@ -34,25 +32,42 @@ function EventsList() {
     });
   }, [place]);
 
+  useEffect(() => {
+    fetchByLocation(classification).then((data) => {
+      setEvents(data);
+    });
+  }, [classification]);
+
   console.log(option);
 
   return (
     <div className="EventsList">
       <form>
-        {option === "keyword"?
-        <input
-        type="text"
-        placeholder="Search by keyword..."
-        onChange={(e) => setKeyword(e.target.value)} 
-      />: <input
-      type="text"
-      placeholder="Search by state..."
-      onChange={(e) => setPlace(e.target.value)} 
-    />}
-         <select onChange={(e) => setOption( e.target.value )}>
-          <option value="keyword">Keyword</option>
-          <option selected defaultValue="state-initials">State Initials</option>
-          <option value="price-range">Price Range</option>
+        {option === "keyword" ? 
+          <input
+            type="text"
+            placeholder="Search by keyword..."
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+         :( option === "state-initials" ? 
+          <input
+            type="text"
+            placeholder="Search by state..."
+            onChange={(e) => setPlace(e.target.value)}
+          />
+         : 
+          <input
+            type="text"
+            placeholder="Search by event type/genre..."
+            onChange={(e) => setClassification(e.target.value)}
+          />
+        )}
+        <select onChange={(e) => setOption(e.target.value)}>
+          <option selected defaultValue="keyword">Keyword</option>
+          <option value="state-initials">
+            State Initials
+          </option>
+          <option value="classification">Event Type</option>
         </select>
         <button type="submit" onClick={() => handleSubmit}>
           Reset
@@ -71,6 +86,7 @@ function EventsList() {
       ) : (
         <p>No matches..</p>
       )}
+      <Link to="/favorites">Go to BucketList</Link>
       <div className="selectedEvent">
         {selectedEvent !== null && <EventInfo event={selectedEvent} />}
       </div>

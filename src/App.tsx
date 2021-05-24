@@ -1,15 +1,26 @@
-import React, { useState } from "react";
 import "./App.css";
-import EventInfo from "./components/EventInfo";
-import EventsList from "./components/EventList";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import EventParent from "./components/EventParent";
-import Header from "./components/Header";
+import { EventContextProvider } from "./context/events-context";
+import Favorites from "./components/Favorites";
 
 function App() {
-  return(
-  <div className='App'>
-      <EventParent/>
-  </div>
-  )
+  return (
+    <div className="App">
+      <EventContextProvider>
+        <Router>
+          <Switch>
+            <Route path="/favorites">
+              <h1>BucketList</h1>
+              <Favorites />
+            </Route>
+            <Route path="/">
+              <EventParent />
+            </Route>
+          </Switch>
+        </Router>
+      </EventContextProvider>
+    </div>
+  );
 }
 export default App;

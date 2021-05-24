@@ -1,3 +1,4 @@
+
 export interface EventResponse {
     _embedded: Embedded;
 }
@@ -12,6 +13,7 @@ export interface Event {
     images: Images[];
     priceRanges: PriceRanges[];
     _embedded: Embedded2;
+    classification: Classification[];
 }
 
 export interface Images {
@@ -52,4 +54,21 @@ export interface PriceRanges {
 
 export interface UpcomingEvents{
     _total: number;
+}
+
+export interface Classification{
+    genre: Genre;
+    subGenre: SubGenre;
+    segment: Segment;
+}
+
+export interface Genre{
+    name: string;
+}
+
+export interface SubGenre{
+    name: string;
+}
+export interface Segment{
+    name: string;
 }

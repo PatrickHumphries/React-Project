@@ -38,3 +38,12 @@ export function fetchAllEvents(keyword: string): Promise<Event[]> {
         return data._embedded?.events;
       });
     }
+
+    export function fetchByClassification(classification: string): Promise<Event[]> {
+      return fetch(`https://app.ticketmaster.com/discovery/v2/events?classificationName=${classification}&apikey=${apiKey}`)
+        .then(res => res.json())
+        // The type of data must be the interface for the outermost JSON
+        .then((data: EventResponse) => {
+          return data._embedded?.events;
+        });
+      }
