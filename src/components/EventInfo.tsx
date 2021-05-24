@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { EventContext } from "../context/events-context";
 import { Event } from "../model/Event";
 import "./EventInfo.css";
@@ -21,6 +22,7 @@ function EventInfo({ event }: Props) {
 
   return (
     <div className="EventInfo">
+      <Link to="/" id="x">X</Link>
       <h1>{event.name}</h1>
       <section>
         <img src={event.images[0].url} />
