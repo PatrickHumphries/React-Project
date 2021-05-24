@@ -1,7 +1,7 @@
 import "./EventList.css";
 import React, { FormEvent, useEffect, useState } from "react";
 import { Event } from "../model/Event";
-import { fetchAllEvents, fetchByLocation } from "../service/events-service";
+import { fetchAllEvents, fetchByClassification, fetchByLocation } from "../service/events-service";
 import EventInfo from "./EventInfo";
 import { Link } from "react-router-dom";
 
@@ -33,7 +33,7 @@ function EventsList() {
   }, [place]);
 
   useEffect(() => {
-    fetchByLocation(classification).then((data) => {
+    fetchByClassification(classification).then((data) => {
       setEvents(data);
     });
   }, [classification]);
@@ -49,7 +49,8 @@ function EventsList() {
             placeholder="Search by keyword..."
             onChange={(e) => setKeyword(e.target.value)}
           />
-         :( option === "state-initials" ? 
+         :
+         ( option === "state-initials" ? 
           <input
             type="text"
             placeholder="Search by state..."
@@ -63,7 +64,7 @@ function EventsList() {
           />
         )}
         <select onChange={(e) => setOption(e.target.value)}>
-          <option selected defaultValue="keyword">Keyword</option>
+          <option value="keyword">Keyword</option>
           <option value="state-initials">
             State Initials
           </option>

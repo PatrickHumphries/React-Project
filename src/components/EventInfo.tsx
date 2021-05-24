@@ -29,10 +29,10 @@ function EventInfo({ event }: Props) {
         {city}, {state}, {country}.
       </p>
       <p>
-        Price Range:{minPrice}-{maxPrice} {currency}
+        Price Range: {minPrice}-{maxPrice} {currency}
       </p>
       <p>
-        Upcoming Events:{upcomingEvents}
+        Upcoming Events: {upcomingEvents}
       </p>
       <p>
       <a href={linkUrl}>Ticketmaster Website</a>

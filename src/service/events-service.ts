@@ -40,6 +40,7 @@ export function fetchAllEvents(keyword: string): Promise<Event[]> {
     }
 
     export function fetchByClassification(classification: string): Promise<Event[]> {
+      console.log(classification);
       return fetch(`https://app.ticketmaster.com/discovery/v2/events?classificationName=${classification}&apikey=${apiKey}`)
         .then(res => res.json())
         // The type of data must be the interface for the outermost JSON
